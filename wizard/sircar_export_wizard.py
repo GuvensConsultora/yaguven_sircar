@@ -126,6 +126,12 @@ class SircarExportWizard(models.TransientModel):
         Si `yaguven_payment_group` está instalado, se excluyen las líneas
         cuyo move venga de un `account.payment.group` (esas ya las cubre
         el datasource custom y duplicarían).
+
+        Nota: Odoo hace INNER JOIN al navegar FKs en dominios. Por eso
+        el filtro de exclusión se arma como OR explícito: o bien el move
+        no tiene payment asociado, o bien el payment no pertenece a un
+        group. Sin el OR las líneas de asientos `entry` sin payment
+        quedarían fuera del JOIN.
         """
         domain = [
             ("company_id", "=", self.company_id.id),
@@ -136,9 +142,11 @@ class SircarExportWizard(models.TransientModel):
         ]
         Payment = self.env.get("account.payment")
         if Payment is not None and "payment_group_id" in Payment._fields:
-            domain.append(
-                ("move_id.origin_payment_id.payment_group_id", "=", False)
-            )
+            domain += [
+                "|",
+                ("move_id.origin_payment_id", "=", False),
+                ("move_id.origin_payment_id.payment_group_id", "=", False),
+            ]
         return self.env["account.move.line"].search(domain)
 
     # === Generación del TXT ===
@@ -203,7 +211,7 @@ class SircarExportWizard(models.TransientModel):
 
         for ln in self._retentions_from_native(taxes):
             move = ln.move_id
-            partner = move.partner_id
+            partner = move.partner_id or ln.partner_id
             cuit = self._clean_cuit(partner.vat)
             if not cuit or len(cuit) != 11:
                 log_lines.append(
@@ -214,19 +222,26 @@ class SircarExportWizard(models.TransientModel):
             regime = tax_to_regime.get(ln.tax_line_id.id)
             if not regime:
                 continue
-            # Base: líneas del move con el tax en `tax_ids` y que NO sean
-            # la propia línea de tax.
+            # Base imponible: tres estrategias en cascada.
+            # 1) Líneas del mismo move con `tax_ids` que contiene el tax
+            #    (caso típico: payment register withholding nativo, donde
+            #    una línea es la base imponible y otra la retención).
+            # 2) Campo `tax_base_amount` de la propia línea de tax (caso
+            #    típico: asientos `entry` de migración manual cargados con
+            #    la base seteada explícitamente).
+            # 3) Derivar la base como `monto_retenido / alícuota_del_tax`
+            #    (último recurso, requiere tax con amount fijo > 0).
             base_lines = move.line_ids.filtered(
                 lambda l: l.tax_line_id != ln.tax_line_id
                 and ln.tax_line_id in l.tax_ids
             )
             base = abs(sum(base_lines.mapped("balance")))
             amt = abs(ln.balance)
+            if not base and ln.tax_base_amount:
+                base = abs(ln.tax_base_amount)
+            if not base and ln.tax_line_id.amount:
+                base = round(amt / (ln.tax_line_id.amount / 100.0), 2)
             rate = (amt / base * 100) if base else 0.0
-            # Número de comprobante: si el move tiene
-            # l10n_latam_document_number lo usamos; si es un asiento entry
-            # sin doc number, caemos al name del move ("AS/2026/0001",
-            # "MIGR-RET-001", etc.) limpiando dígitos.
             voucher = (move.l10n_latam_document_number
                        or move.ref
                        or move.name
