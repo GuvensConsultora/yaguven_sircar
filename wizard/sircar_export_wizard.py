@@ -242,8 +242,14 @@ class SircarExportWizard(models.TransientModel):
             if not base and ln.tax_line_id.amount:
                 base = round(amt / (ln.tax_line_id.amount / 100.0), 2)
             rate = (amt / base * 100) if base else 0.0
-            voucher = (move.l10n_latam_document_number
-                       or move.ref
+            # El move de una retención (sea migración o flujo nativo
+            # l10n_ar_withholding) es tipo `entry`. El número del
+            # certificado vive en `ref` (Moogah migración o sequence
+            # del tax nativo). Solo si `ref` está vacío caemos al
+            # l10n_latam_document_number — útil cuando la retención
+            # está embebida en el move de una factura.
+            voucher = (move.ref
+                       or move.l10n_latam_document_number
                        or move.name
                        or "")
             renglon += 1
