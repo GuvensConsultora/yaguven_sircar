@@ -1,11 +1,17 @@
 """Wizard generador del TXT SIRCAR (Anexo I percepciones / Anexo II retenciones).
 
-Lee retenciones/percepciones de:
-1. Custom: `account.payment.group.withholding` si yaguven_payment_group está
-   instalado (datasource, no extiende).
-2. Nativo: `l10n_ar_withholding_ids` directo en account.payment / account.move.
+Datasources de RETENCIONES (excluyentes, no aditivos):
+- Si `yaguven_payment_group` está instalado → leer SOLO de
+  `account.payment.group.withholding`. Las líneas de `account.move.line`
+  con `tax_line_id` del asiento generado por el group quedan cubiertas
+  por ese datasource y no se vuelven a leer (evita duplicación).
+- Si NO está instalado → leer del motor nativo `l10n_ar_withholding`
+  (`account.move.line` con `tax_line_id`).
 
-Ambos se filtran por:
+Datasources de PERCEPCIONES: siempre desde `account.move` (facturas de
+venta posteadas con el tax aplicado en `invoice_line_ids.tax_ids`).
+
+Filtros comunes:
 - mapping `yaguven.sircar.tax.mapping` (tax_id ∈ regímenes de la jurisdicción)
 - período (date_from / date_to)
 - compañía
@@ -142,75 +148,78 @@ class SircarExportWizard(models.TransientModel):
         renglon = 0
         log_lines = []
 
-        # 1) Retenciones desde payment_group_withholding (custom)
-        for w in self._retentions_from_payment_group(taxes):
-            partner = w.payment_group_id.partner_id
-            cuit = self._clean_cuit(partner.vat)
-            if not cuit or len(cuit) != 11:
-                log_lines.append(
-                    f"  WARN payment_group_id={w.payment_group_id.id} "
-                    f"partner='{partner.name}' CUIT inválido='{cuit}'"
+        # Datasource ÚNICO (excluyente, no aditivo): si yaguven_payment_group
+        # está instalado, todas las retenciones pasan por su tabla propia,
+        # y el motor nativo l10n_ar_withholding no se consulta para evitar
+        # duplicar la misma retención que también aparece como account.move.line
+        # del asiento generado por el group.
+        if self.env.get("account.payment.group.withholding") is not None:
+            for w in self._retentions_from_payment_group(taxes):
+                partner = w.payment_group_id.partner_id
+                cuit = self._clean_cuit(partner.vat)
+                if not cuit or len(cuit) != 11:
+                    log_lines.append(
+                        f"  WARN payment_group_id={w.payment_group_id.id} "
+                        f"partner='{partner.name}' CUIT inválido='{cuit}'"
+                    )
+                    continue
+                regime = tax_to_regime.get(w.tax_id.id)
+                if not regime:
+                    continue
+                base = w.base_amount or 0.0
+                amt = w.amount or 0.0
+                rate = (amt / base * 100) if base else 0.0
+                renglon += 1
+                rows.append([
+                    str(renglon).zfill(5),
+                    "1",                               # origen software propio
+                    "1",                               # tipo: comprobante
+                    self._split_voucher(w.name or ""),
+                    cuit,
+                    self._format_date(w.payment_group_id.payment_date),
+                    self._format_amount(base),
+                    self._format_rate(rate),
+                    self._format_amount(amt),
+                    regime.code,
+                    cm_code,
+                ])
+        else:
+            for ln in self._retentions_from_native(taxes):
+                move = ln.move_id
+                partner = move.partner_id
+                cuit = self._clean_cuit(partner.vat)
+                if not cuit or len(cuit) != 11:
+                    log_lines.append(
+                        f"  WARN move_id={move.id} name='{move.name}' "
+                        f"partner='{partner.name}' CUIT inválido='{cuit}'"
+                    )
+                    continue
+                regime = tax_to_regime.get(ln.tax_line_id.id)
+                if not regime:
+                    continue
+                # Base: líneas del move con el tax en `tax_ids` y que NO sean
+                # la propia línea de tax.
+                base_lines = move.line_ids.filtered(
+                    lambda l: l.tax_line_id != ln.tax_line_id
+                    and ln.tax_line_id in l.tax_ids
                 )
-                continue
-            regime = tax_to_regime.get(w.tax_id.id)
-            if not regime:
-                continue
-            base = w.base_amount or 0.0
-            amt = w.amount or 0.0
-            rate = (amt / base * 100) if base else 0.0
-            renglon += 1
-            rows.append([
-                str(renglon).zfill(5),
-                "1",                               # origen software propio
-                "1",                               # tipo: comprobante
-                self._split_voucher(w.name or ""),
-                cuit,
-                self._format_date(w.payment_group_id.payment_date),
-                self._format_amount(base),
-                self._format_rate(rate),
-                self._format_amount(amt),
-                regime.code,
-                cm_code,
-            ])
-
-        # 2) Retenciones desde lines nativas (l10n_ar_withholding)
-        for ln in self._retentions_from_native(taxes):
-            move = ln.move_id
-            partner = move.partner_id
-            cuit = self._clean_cuit(partner.vat)
-            if not cuit or len(cuit) != 11:
-                log_lines.append(
-                    f"  WARN move_id={move.id} name='{move.name}' "
-                    f"partner='{partner.name}' CUIT inválido='{cuit}'"
-                )
-                continue
-            regime = tax_to_regime.get(ln.tax_line_id.id)
-            if not regime:
-                continue
-            # Base imponible: línea de tipo 'product'/'tax' del mismo move
-            # que tiene el tax en su `tax_ids` y NO es la propia línea de tax.
-            base_lines = move.line_ids.filtered(
-                lambda l: l.tax_line_id != ln.tax_line_id
-                and ln.tax_line_id in l.tax_ids
-            )
-            base = sum(base_lines.mapped("balance"))
-            base = abs(base)
-            amt = abs(ln.balance)
-            rate = (amt / base * 100) if base else 0.0
-            renglon += 1
-            rows.append([
-                str(renglon).zfill(5),
-                "1",
-                "1",
-                self._split_voucher(move.l10n_latam_document_number or ""),
-                cuit,
-                self._format_date(move.date),
-                self._format_amount(base),
-                self._format_rate(rate),
-                self._format_amount(amt),
-                regime.code,
-                cm_code,
-            ])
+                base = abs(sum(base_lines.mapped("balance")))
+                amt = abs(ln.balance)
+                rate = (amt / base * 100) if base else 0.0
+                renglon += 1
+                rows.append([
+                    str(renglon).zfill(5),
+                    "1",
+                    "1",
+                    self._split_voucher(move.l10n_latam_document_number or ""),
+                    cuit,
+                    self._format_date(move.date),
+                    self._format_amount(base),
+                    self._format_rate(rate),
+                    self._format_amount(amt),
+                    regime.code,
+                    cm_code,
+                ])
 
         return rows, log_lines
 
