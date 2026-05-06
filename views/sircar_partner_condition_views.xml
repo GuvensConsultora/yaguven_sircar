@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sircar_partner_condition_list" model="ir.ui.view">
+        <field name="name">yaguven.sircar.partner.condition.list</field>
+        <field name="model">yaguven.sircar.partner.condition</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="partner_id"/>
+                <field name="jurisdiction_id"/>
+                <field name="regime_id"/>
+                <field name="kind"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_sircar_partner_condition_form" model="ir.ui.view">
+        <field name="name">yaguven.sircar.partner.condition.form</field>
+        <field name="model">yaguven.sircar.partner.condition</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="jurisdiction_id"/>
+                        <field name="regime_id"/>
+                        <field name="kind" readonly="1"/>
+                        <field name="active"/>
+                    </group>
+                    <field name="notes" placeholder="Notas (motivo del override, fecha de cambio, ref. resolución ATM, etc.)"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sircar_partner_condition" model="ir.actions.act_window">
+        <field name="name">Condición Partner ↔ Régimen</field>
+        <field name="res_model">yaguven.sircar.partner.condition</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Cargar override de régimen por partner</p>
+            <p>Cada fila indica que un partner debe tributar bajo un régimen específico
+               en una jurisdicción. Útil cuando el partner es Convenio Multilateral,
+               está en padrón de riesgo fiscal, o cae en un inciso particular del régimen.</p>
+        </field>
+    </record>
+</odoo>

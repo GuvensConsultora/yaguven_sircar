@@ -33,4 +33,10 @@
               parent="menu_sircar_config"
               action="action_sircar_tax_mapping"
               sequence="30"/>
+
+    <menuitem id="menu_sircar_partner_condition"
+              name="Condiciones Partner"
+              parent="menu_sircar_config"
+              action="action_sircar_partner_condition"
+              sequence="40"/>
 </odoo>

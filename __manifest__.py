@@ -1,6 +1,6 @@
 {
     "name": "Yagüven SIRCAR — DDJJ Agentes Recaudación IIBB",
-    "version": "19.0.1.0.4",
+    "version": "19.0.1.0.5",
     "summary": (
         "Genera el TXT de DDJJ del Sistema de Recaudación y Control de "
         "Agentes de Recaudación (COMARB) — Anexo I percepciones, Anexo II "
@@ -22,6 +22,7 @@
         "views/sircar_jurisdiction_views.xml",
         "views/sircar_regime_views.xml",
         "views/sircar_tax_mapping_views.xml",
+        "views/sircar_partner_condition_views.xml",
         "views/sircar_export_wizard_views.xml",
         "views/sircar_menus.xml",
     ],

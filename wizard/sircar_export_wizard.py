@@ -168,6 +168,19 @@ class SircarExportWizard(models.TransientModel):
         taxes = mapping.mapped("tax_id")
         cm_code = self.jurisdiction_id.cm_code
 
+        # Pre-cargar overrides partner→régimen para esta jurisdicción + kind.
+        # Permite que un proveedor CM use régimen 103 mientras los locales
+        # quedan con el default 101 del mapping del tax.
+        overrides = self.env["yaguven.sircar.partner.condition"].search([
+            ("jurisdiction_id", "=", self.jurisdiction_id.id),
+            ("kind", "=", "retention"),
+            ("active", "=", True),
+        ])
+        partner_override = {o.partner_id.id: o.regime_id for o in overrides}
+
+        def regime_for(partner, tax_id):
+            return partner_override.get(partner.id) or tax_to_regime.get(tax_id)
+
         rows = []
         renglon = 0
         log_lines = []
@@ -188,7 +201,7 @@ class SircarExportWizard(models.TransientModel):
                     f"partner='{partner.name}' CUIT inválido='{cuit}'"
                 )
                 continue
-            regime = tax_to_regime.get(w.tax_id.id)
+            regime = regime_for(partner, w.tax_id.id)
             if not regime:
                 continue
             base = w.base_amount or 0.0
@@ -219,7 +232,7 @@ class SircarExportWizard(models.TransientModel):
                     f"partner='{partner.name}' CUIT inválido='{cuit}'"
                 )
                 continue
-            regime = tax_to_regime.get(ln.tax_line_id.id)
+            regime = regime_for(partner, ln.tax_line_id.id)
             if not regime:
                 continue
             # Base imponible: tres estrategias en cascada.
