@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sircar_tax_mapping_list" model="ir.ui.view">
+        <field name="name">yaguven.sircar.tax.mapping.list</field>
+        <field name="model">yaguven.sircar.tax.mapping</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="jurisdiction_id"/>
+                <field name="kind"/>
+                <field name="regime_id"/>
+                <field name="tax_id"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_sircar_tax_mapping_form" model="ir.ui.view">
+        <field name="name">yaguven.sircar.tax.mapping.form</field>
+        <field name="model">yaguven.sircar.tax.mapping</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="company_id"
+                               groups="base.group_multi_company"/>
+                        <field name="regime_id"/>
+                        <field name="jurisdiction_id" readonly="1"/>
+                        <field name="kind" readonly="1"/>
+                        <field name="tax_id"/>
+                        <field name="active"/>
+                    </group>
+                    <field name="notes" placeholder="Notas..."/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sircar_tax_mapping" model="ir.actions.act_window">
+        <field name="name">Mapping Impuestos ↔ SIRCAR</field>
+        <field name="res_model">yaguven.sircar.tax.mapping</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

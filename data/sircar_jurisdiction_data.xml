@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Jurisdicciones que ADHIEREN al SIRCAR (al 2026-05).
+             Se excluyen CABA (901), Buenos Aires (902) y Tucumán (924)
+             que NO adhieren — usar sus regímenes propios.
+             El cliente activa is_perception_agent / is_retention_agent
+             según su situación real en cada jurisdicción. -->
+
+        <record id="jur_catamarca" model="yaguven.sircar.jurisdiction">
+            <field name="name">Catamarca</field>
+            <field name="cm_code">903</field>
+        </record>
+        <record id="jur_cordoba" model="yaguven.sircar.jurisdiction">
+            <field name="name">Córdoba</field>
+            <field name="cm_code">904</field>
+        </record>
+        <record id="jur_corrientes" model="yaguven.sircar.jurisdiction">
+            <field name="name">Corrientes</field>
+            <field name="cm_code">905</field>
+        </record>
+        <record id="jur_chaco" model="yaguven.sircar.jurisdiction">
+            <field name="name">Chaco</field>
+            <field name="cm_code">906</field>
+        </record>
+        <record id="jur_chubut" model="yaguven.sircar.jurisdiction">
+            <field name="name">Chubut</field>
+            <field name="cm_code">907</field>
+        </record>
+        <record id="jur_entre_rios" model="yaguven.sircar.jurisdiction">
+            <field name="name">Entre Ríos</field>
+            <field name="cm_code">908</field>
+        </record>
+        <record id="jur_formosa" model="yaguven.sircar.jurisdiction">
+            <field name="name">Formosa</field>
+            <field name="cm_code">909</field>
+        </record>
+        <record id="jur_jujuy" model="yaguven.sircar.jurisdiction">
+            <field name="name">Jujuy</field>
+            <field name="cm_code">910</field>
+        </record>
+        <record id="jur_la_pampa" model="yaguven.sircar.jurisdiction">
+            <field name="name">La Pampa</field>
+            <field name="cm_code">911</field>
+        </record>
+        <record id="jur_la_rioja" model="yaguven.sircar.jurisdiction">
+            <field name="name">La Rioja</field>
+            <field name="cm_code">912</field>
+        </record>
+        <record id="jur_mendoza" model="yaguven.sircar.jurisdiction">
+            <field name="name">Mendoza</field>
+            <field name="cm_code">913</field>
+            <field name="is_retention_agent" eval="True"/>
+        </record>
+        <record id="jur_misiones" model="yaguven.sircar.jurisdiction">
+            <field name="name">Misiones</field>
+            <field name="cm_code">914</field>
+        </record>
+        <record id="jur_neuquen" model="yaguven.sircar.jurisdiction">
+            <field name="name">Neuquén</field>
+            <field name="cm_code">915</field>
+        </record>
+        <record id="jur_rio_negro" model="yaguven.sircar.jurisdiction">
+            <field name="name">Río Negro</field>
+            <field name="cm_code">916</field>
+        </record>
+        <record id="jur_salta" model="yaguven.sircar.jurisdiction">
+            <field name="name">Salta</field>
+            <field name="cm_code">917</field>
+        </record>
+        <record id="jur_san_juan" model="yaguven.sircar.jurisdiction">
+            <field name="name">San Juan</field>
+            <field name="cm_code">918</field>
+        </record>
+        <record id="jur_san_luis" model="yaguven.sircar.jurisdiction">
+            <field name="name">San Luis</field>
+            <field name="cm_code">919</field>
+        </record>
+        <record id="jur_santa_cruz" model="yaguven.sircar.jurisdiction">
+            <field name="name">Santa Cruz</field>
+            <field name="cm_code">920</field>
+        </record>
+        <record id="jur_santa_fe" model="yaguven.sircar.jurisdiction">
+            <field name="name">Santa Fe</field>
+            <field name="cm_code">921</field>
+        </record>
+        <record id="jur_santiago_del_estero" model="yaguven.sircar.jurisdiction">
+            <field name="name">Santiago del Estero</field>
+            <field name="cm_code">922</field>
+        </record>
+        <record id="jur_tierra_del_fuego" model="yaguven.sircar.jurisdiction">
+            <field name="name">Tierra del Fuego</field>
+            <field name="cm_code">923</field>
+        </record>
+    </data>
+</odoo>

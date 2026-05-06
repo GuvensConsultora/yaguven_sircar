@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sircar_export_wizard_form" model="ir.ui.view">
+        <field name="name">yaguven.sircar.export.wizard.form</field>
+        <field name="model">yaguven.sircar.export.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generar TXT SIRCAR">
+                <sheet>
+                    <group>
+                        <field name="company_id"
+                               groups="base.group_multi_company"/>
+                        <field name="jurisdiction_id"/>
+                        <field name="kind"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                    <group string="Resultado"
+                           invisible="not file_txt">
+                        <field name="file_txt" filename="file_name"
+                               readonly="1"/>
+                        <field name="file_name" invisible="1"/>
+                        <field name="log" readonly="1"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_generate" type="object"
+                            string="Generar TXT" class="btn-primary"/>
+                    <button string="Cerrar" class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sircar_export_wizard" model="ir.actions.act_window">
+        <field name="name">Generar TXT SIRCAR</field>
+        <field name="res_model">yaguven.sircar.export.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

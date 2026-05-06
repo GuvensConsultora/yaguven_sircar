@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_sircar_root"
+              name="SIRCAR"
+              parent="account.menu_finance"
+              sequence="90"/>
+
+    <menuitem id="menu_sircar_export"
+              name="Generar TXT"
+              parent="menu_sircar_root"
+              action="action_sircar_export_wizard"
+              sequence="10"/>
+
+    <menuitem id="menu_sircar_config"
+              name="Configuración"
+              parent="menu_sircar_root"
+              sequence="90"/>
+
+    <menuitem id="menu_sircar_jurisdiction"
+              name="Jurisdicciones"
+              parent="menu_sircar_config"
+              action="action_sircar_jurisdiction"
+              sequence="10"/>
+
+    <menuitem id="menu_sircar_regime"
+              name="Regímenes"
+              parent="menu_sircar_config"
+              action="action_sircar_regime"
+              sequence="20"/>
+
+    <menuitem id="menu_sircar_tax_mapping"
+              name="Mapping Impuestos"
+              parent="menu_sircar_config"
+              action="action_sircar_tax_mapping"
+              sequence="30"/>
+</odoo>

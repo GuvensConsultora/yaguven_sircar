@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sircar_jurisdiction_user,sircar jurisdiction user,model_yaguven_sircar_jurisdiction,account.group_account_invoice,1,0,0,0
+access_sircar_jurisdiction_manager,sircar jurisdiction manager,model_yaguven_sircar_jurisdiction,account.group_account_manager,1,1,1,1
+access_sircar_regime_user,sircar regime user,model_yaguven_sircar_regime,account.group_account_invoice,1,0,0,0
+access_sircar_regime_manager,sircar regime manager,model_yaguven_sircar_regime,account.group_account_manager,1,1,1,1
+access_sircar_tax_mapping_user,sircar tax mapping user,model_yaguven_sircar_tax_mapping,account.group_account_invoice,1,0,0,0
+access_sircar_tax_mapping_manager,sircar tax mapping manager,model_yaguven_sircar_tax_mapping,account.group_account_manager,1,1,1,1
+access_sircar_export_wizard,sircar export wizard,model_yaguven_sircar_export_wizard,account.group_account_manager,1,1,1,1

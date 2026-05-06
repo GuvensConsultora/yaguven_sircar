@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sircar_jurisdiction_list" model="ir.ui.view">
+        <field name="name">yaguven.sircar.jurisdiction.list</field>
+        <field name="model">yaguven.sircar.jurisdiction</field>
+        <field name="arch" type="xml">
+            <list string="Jurisdicciones SIRCAR">
+                <field name="cm_code"/>
+                <field name="name"/>
+                <field name="frequency"/>
+                <field name="is_perception_agent"/>
+                <field name="is_retention_agent"/>
+                <field name="regime_count"/>
+                <field name="active" invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_sircar_jurisdiction_form" model="ir.ui.view">
+        <field name="name">yaguven.sircar.jurisdiction.form</field>
+        <field name="model">yaguven.sircar.jurisdiction</field>
+        <field name="arch" type="xml">
+            <form string="Jurisdicción SIRCAR">
+                <header>
+                    <button name="action_view_regimes" type="object"
+                            string="Regímenes" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object"
+                                name="action_view_regimes" icon="fa-list">
+                            <field name="regime_count" widget="statinfo"
+                                   string="Regímenes"/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Archivada"
+                            bg_color="bg-danger"
+                            invisible="active"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="cm_code"/>
+                            <field name="state_id"/>
+                            <field name="frequency"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="is_perception_agent"/>
+                            <field name="is_retention_agent"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Regímenes" name="regimes">
+                            <field name="regime_ids">
+                                <list editable="bottom">
+                                    <field name="kind"/>
+                                    <field name="code"/>
+                                    <field name="name"/>
+                                    <field name="active"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notas" name="notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sircar_jurisdiction" model="ir.actions.act_window">
+        <field name="name">Jurisdicciones SIRCAR</field>
+        <field name="res_model">yaguven.sircar.jurisdiction</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

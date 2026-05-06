@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Regimenes SIRCAR Mendoza (913).
+             Fuente oficial: ATM Mendoza, archivo
+             SIRCAR_Regimenes_Mendoza.xlsx (76 registros).
+             Retenciones (101-124): RG 19/2012 Art. 5
+             Percepciones (201-252): RG 30/1999 Anexos I a XI -->
+
+        <record id="reg_mza_101" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">101</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 C.LOCAL</field>
+        </record>
+        <record id="reg_mza_102" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">102</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 C.LOCAL RIESGO FISCAL /NO INSCRIPTO</field>
+        </record>
+        <record id="reg_mza_103" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">103</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 C.MULT.</field>
+        </record>
+        <record id="reg_mza_104" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">104</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 C.MULT. RIESGO FISCAL /NO INSCRIPTO</field>
+        </record>
+        <record id="reg_mza_105" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">105</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 INC. A)</field>
+        </record>
+        <record id="reg_mza_106" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">106</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 INC. A) RIESGO FISCAL /NO INSCRIPTO</field>
+        </record>
+        <record id="reg_mza_107" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">107</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 INC. B)</field>
+        </record>
+        <record id="reg_mza_108" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">108</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 INC. B) RIESGO FISCAL /NO INSCRIPTO</field>
+        </record>
+        <record id="reg_mza_109" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">109</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 INC. C)</field>
+        </record>
+        <record id="reg_mza_110" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">110</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 INC. C) RIESGO FISCAL /NO INSCRIPTO</field>
+        </record>
+        <record id="reg_mza_111" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">111</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 INC. D)</field>
+        </record>
+        <record id="reg_mza_112" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">112</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 INC. D) RIESGO FISCAL /NO INSCRIPTO</field>
+        </record>
+        <record id="reg_mza_113" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">113</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 INC. E)</field>
+        </record>
+        <record id="reg_mza_114" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">114</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 INC. E) RIESGO FISCAL /NO INSCRIPTO</field>
+        </record>
+        <record id="reg_mza_115" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">115</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 INC. F)</field>
+        </record>
+        <record id="reg_mza_116" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">116</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 INC. F) RIESGO FISCAL /NO INSCRIPTO</field>
+        </record>
+        <record id="reg_mza_117" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">117</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 INC. G)</field>
+        </record>
+        <record id="reg_mza_118" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">118</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 INC. G) RIESGO FISCAL /NO INSCRIPTO</field>
+        </record>
+        <record id="reg_mza_119" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">119</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 INC. H)</field>
+        </record>
+        <record id="reg_mza_120" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">120</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 INC. H) RIESGO FISCAL /NO INSCRIPTO</field>
+        </record>
+        <record id="reg_mza_121" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">121</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 INC. I)</field>
+        </record>
+        <record id="reg_mza_122" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">122</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 INC. I) RIESGO FISCAL /NO INSCRIPTO</field>
+        </record>
+        <record id="reg_mza_123" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">123</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 INC. J)</field>
+        </record>
+        <record id="reg_mza_124" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">retention</field>
+            <field name="code">124</field>
+            <field name="name">RETENCIÓN RG 19/12 ART 5 INC. J) RIESGO FISCAL /NO INSCRIPTO</field>
+        </record>
+        <record id="reg_mza_201" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">201</field>
+            <field name="name">PERCEPCIÓN RG30/99 ACT. ADJ. ART 6</field>
+        </record>
+        <record id="reg_mza_202" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">202</field>
+            <field name="name">PERCEPCIÓN RG30/99 ACT. ADJ. ART 6 NO INSCRIPTO/RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_203" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">203</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO I C. LOCAL</field>
+        </record>
+        <record id="reg_mza_204" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">204</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO I C. LOCAL NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_205" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">205</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO I C. MULT.</field>
+        </record>
+        <record id="reg_mza_206" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">206</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO I C. MULT. NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_207" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">207</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO I AS. COOP.</field>
+        </record>
+        <record id="reg_mza_208" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">208</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO I AS. COOP. NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_209" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">209</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO II C. LOCAL</field>
+        </record>
+        <record id="reg_mza_210" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">210</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO II C. LOCAL NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_211" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">211</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO II C. MULT.</field>
+        </record>
+        <record id="reg_mza_212" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">212</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO II C. MULT. NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_213" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">213</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO II AS. COOP.</field>
+        </record>
+        <record id="reg_mza_214" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">214</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO II AS. COOP. NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_215" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">215</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO III C. LOCAL</field>
+        </record>
+        <record id="reg_mza_216" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">216</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO III C. LOCAL NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_217" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">217</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO III C. MULT.</field>
+        </record>
+        <record id="reg_mza_218" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">218</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO III C. MULT. NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_219" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">219</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO IV INC A) C. LOCAL</field>
+        </record>
+        <record id="reg_mza_220" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">220</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO IV INC A) C. LOCAL NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_221" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">221</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO IV INC A) C. MULT.</field>
+        </record>
+        <record id="reg_mza_222" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">222</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO IV INC A) C. MULT. NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_223" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">223</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO IV INC A) AS. COOP.</field>
+        </record>
+        <record id="reg_mza_224" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">224</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO IV INC A) AS. COOP. NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_225" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">225</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO IV INC B) C. LOCAL</field>
+        </record>
+        <record id="reg_mza_226" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">226</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO IV INC B) C. LOCAL NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_227" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">227</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO IV INC B) C. MULT.</field>
+        </record>
+        <record id="reg_mza_228" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">228</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO IV INC B) C. MULT. NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_229" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">229</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO IV INC B) AS. COOP.</field>
+        </record>
+        <record id="reg_mza_230" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">230</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO IV INC B) AS. COOP. NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_231" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">231</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO V C. LOCAL</field>
+        </record>
+        <record id="reg_mza_232" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">232</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO V C. LOCAL NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_233" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">233</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO V C. MULT.</field>
+        </record>
+        <record id="reg_mza_234" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">234</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO V C. MULT. NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_235" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">235</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO VI</field>
+        </record>
+        <record id="reg_mza_236" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">236</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO VI NO INSCRIPTO/RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_237" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">237</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO VII C. LOCAL</field>
+        </record>
+        <record id="reg_mza_238" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">238</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO VII C. LOCAL NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_239" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">239</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO VII C. MULT.</field>
+        </record>
+        <record id="reg_mza_240" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">240</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO VII C. MULT. NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_241" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">241</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO VIII C. LOCAL</field>
+        </record>
+        <record id="reg_mza_242" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">242</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO VIII C. LOCAL NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_243" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">243</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO VIII C. MULT.</field>
+        </record>
+        <record id="reg_mza_244" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">244</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO VIII C. MULT. NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_245" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">245</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO IX</field>
+        </record>
+        <record id="reg_mza_246" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">246</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO IX NO INSCRIPTO/RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_247" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">247</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO X STAND</field>
+        </record>
+        <record id="reg_mza_248" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">248</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO X AMBULANTE</field>
+        </record>
+        <record id="reg_mza_249" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">249</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO XI C. LOCAL</field>
+        </record>
+        <record id="reg_mza_250" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">250</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO XI C. LOCAL NO INSC./RIESGO FISCAL</field>
+        </record>
+        <record id="reg_mza_251" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">251</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO XI C. MULT.</field>
+        </record>
+        <record id="reg_mza_252" model="yaguven.sircar.regime">
+            <field name="jurisdiction_id" ref="jur_mendoza"/>
+            <field name="kind">perception</field>
+            <field name="code">252</field>
+            <field name="name">PERCEPCIÓN RG 30/99 ANEXO XI C. MULT. NO INSC./RIESGO FISCAL</field>
+        </record>
+    </data>
+</odoo>
