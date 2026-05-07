@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <menuitem id="menu_sircar_root"
-              name="SIRCAR"
-              parent="account.menu_finance"
+              name="SIRCAR (retenciones IIBB)"
+              parent="account.menu_finance_reports"
               sequence="90"/>
 
     <menuitem id="menu_sircar_export"
