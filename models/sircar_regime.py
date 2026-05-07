@@ -32,6 +32,14 @@ class SircarRegime(models.Model):
         string="Tipo",
         required=True,
     )
+    min_amount = fields.Float(
+        string="Mínimo no imponible",
+        default=0.0,
+        help="Monto mínimo de base imponible por debajo del cual NO "
+             "corresponde retener/percibir bajo este régimen. Si la "
+             "base calculada en una OP es menor a este valor, el módulo "
+             "no genera línea de retención. 0 = sin mínimo aplicable.",
+    )
     notes = fields.Text(string="Notas")
     active = fields.Boolean(default=True)
     display_name = fields.Char(compute="_compute_display_name", store=False)

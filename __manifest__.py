@@ -1,6 +1,6 @@
 {
     "name": "Yagüven SIRCAR — DDJJ Agentes Recaudación IIBB",
-    "version": "19.0.1.0.5",
+    "version": "19.0.1.0.6",
     "summary": (
         "Genera el TXT de DDJJ del Sistema de Recaudación y Control de "
         "Agentes de Recaudación (COMARB) — Anexo I percepciones, Anexo II "

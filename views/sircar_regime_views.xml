@@ -9,6 +9,7 @@
                 <field name="kind"/>
                 <field name="code"/>
                 <field name="name"/>
+                <field name="min_amount"/>
                 <field name="active"/>
             </list>
         </field>
@@ -25,6 +26,7 @@
                         <field name="kind"/>
                         <field name="code"/>
                         <field name="name"/>
+                        <field name="min_amount"/>
                         <field name="active"/>
                     </group>
                     <field name="notes" placeholder="Notas..."/>
