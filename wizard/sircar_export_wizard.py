@@ -132,6 +132,14 @@ class SircarExportWizard(models.TransientModel):
         no tiene payment asociado, o bien el payment no pertenece a un
         group. Sin el OR las líneas de asientos `entry` sin payment
         quedarían fuera del JOIN.
+
+        Reversos: anular una OP por reversión NO cambia el estado del
+        asiento original (queda `posted`) y crea un asiento nuevo, también
+        posteado, con la misma retención invertida. Ese reverso entraba acá
+        y salía en el TXT como una retención practicada en el mes de la
+        anulación. Se excluye por `reversed_entry_id` y, además, se exige
+        que el importe esté al haber, que es como se registra una retención
+        practicada.
         """
         domain = [
             ("company_id", "=", self.company_id.id),
@@ -139,6 +147,8 @@ class SircarExportWizard(models.TransientModel):
             ("date", ">=", self.date_from),
             ("date", "<=", self.date_to),
             ("parent_state", "=", "posted"),
+            ("move_id.reversed_entry_id", "=", False),
+            ("credit", ">", 0),
         ]
         Payment = self.env.get("account.payment")
         if Payment is not None and "payment_group_id" in Payment._fields:
